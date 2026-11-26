@@ -1,4 +1,5 @@
-
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { useState } from 'react';
 
 function SignUp() {
@@ -38,7 +39,7 @@ function SignUp() {
 
             <h1>Create Account</h1>
 
-            <input
+            <Input
                 type="text"
                 placeholder="Enter Name"
                 value={name}
@@ -47,7 +48,7 @@ function SignUp() {
 
             <br /><br />
 
-            <input
+            <Input
                 type="email"
                 placeholder="Enter Email"
                 value={email}
@@ -56,7 +57,7 @@ function SignUp() {
 
             <br /><br />
 
-            <input
+            <Input
                 type="password"
                 placeholder="Enter Password"
                 value={password}
@@ -65,9 +66,9 @@ function SignUp() {
 
             <br /><br />
 
-            <button onClick={handleSignUp}>
+            <Button onClick={handleSignUp}>
                 Sign Up
-            </button>
+            </Button>
 
         </div>
     );

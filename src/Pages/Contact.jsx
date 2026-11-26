@@ -1,4 +1,5 @@
-
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { useState } from 'react';
 
 function Contact() {
@@ -39,7 +40,7 @@ function Contact() {
 
             <form onSubmit={handleSubmit}>
 
-                <input
+                <Input
                     type="text"
                     placeholder="Enter Name"
                     value={name}
@@ -48,7 +49,7 @@ function Contact() {
 
                 <br /><br />
 
-                <input
+                <Input
                     type="email"
                     placeholder="Enter Email"
                     value={email}
@@ -65,9 +66,9 @@ function Contact() {
 
                 <br /><br />
 
-                <button type="submit">
-                    Submit
-                </button>
+                <Button type="submit">
+                    Submit Message
+                </Button>
 
             </form>
 

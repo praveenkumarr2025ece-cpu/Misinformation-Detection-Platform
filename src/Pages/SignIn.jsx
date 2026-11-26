@@ -1,3 +1,4 @@
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -68,17 +69,18 @@ function SignIn() {
 
                 <div>
                     <h2>Welcome Back!</h2>
+                    <Button onClick={handleLogin}>
+                    Login
+                    </Button>
 
-                    <button onClick={handleLogout}>
-                        Logout
-                    </button>
+          
                 </div>
 
             ) : (
 
                 <div>
 
-                    <input
+                    <Input
                         type="email"
                         placeholder="Enter Email"
                         value={email}
@@ -87,7 +89,7 @@ function SignIn() {
 
                     <br /><br />
 
-                    <input
+                    <Input
                         type="password"
                         placeholder="Enter Password"
                         value={password}
@@ -96,9 +98,9 @@ function SignIn() {
 
                     <br /><br />
 
-                    <button onClick={handleLogin}>
+                    <Button onClick={handleLogin}>
                         Login
-                    </button>
+                    </Button>
 
                 </div>
 
