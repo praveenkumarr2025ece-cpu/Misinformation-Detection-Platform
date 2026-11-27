@@ -2,11 +2,11 @@
 function TaskCard({ title, count, description, icon: Icon, color }) {
 
     return (
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+        <div className="bg-card text-card-foreground p-6 rounded-xl shadow-sm border border-border hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
 
             <div className="flex items-center justify-between mb-4">
 
-                <h3 className="text-gray-600 font-medium">
+                <h3 className="text-muted-foreground font-medium">
                     {title}
                 </h3>
 
@@ -16,11 +16,11 @@ function TaskCard({ title, count, description, icon: Icon, color }) {
 
             </div>
 
-            <h2 className="text-3xl font-bold text-gray-800 mb-2">
+            <h2 className="text-3xl font-bold mb-2">
                 {count}
             </h2>
 
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-muted-foreground">
                 {description}
             </p>
 
