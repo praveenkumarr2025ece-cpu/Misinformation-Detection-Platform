@@ -38,6 +38,28 @@ function VerifyNews() {
 
         setArticles(updatedArticles);
 
+        // Save a new notification
+        const notifications = JSON.parse(
+            localStorage.getItem('truthLensNotifications') || '[]'
+        );
+
+        const newNotification = {
+            id: Date.now(),
+            message: 'New article submitted',
+            articleTitle: newArticle.title,
+            type: 'submission',
+            createdAt: new Date().toLocaleString(),
+            read: false
+        };
+
+        localStorage.setItem(
+            'truthLensNotifications',
+            JSON.stringify([newNotification, ...notifications])
+        );
+
+        // Notify Navbar
+        window.dispatchEvent(new Event('notificationsUpdated'));
+
         setMessage('Article submitted successfully!');
 
         setTitle('');

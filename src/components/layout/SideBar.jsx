@@ -9,23 +9,25 @@ import {
     Settings
 } from 'lucide-react';
 
-function Sidebar() {
+function Sidebar({ onNavigate }) {
 
     const menuItems = [
-        { name: "Dashboard", path: "/home", icon: LayoutDashboard },
-        { name: "Verify News", path: "/verify", icon: FileSearch },
-        { name: "Verification History", path: "/history", icon: History },
-        { name: "Reports", path: "/reports", icon: ChartBar },
-        { name: "Settings", path: "/settings", icon: Settings }
+        { name: 'Dashboard', path: '/home', icon: LayoutDashboard },
+        { name: 'Verify News', path: '/verify', icon: FileSearch },
+        { name: 'Verification History', path: '/history', icon: History },
+        { name: 'Reports', path: '/reports', icon: ChartBar },
+        { name: 'Settings', path: '/settings', icon: Settings }
     ];
 
     return (
-        <aside className="w-16 md:w-64 min-h-screen shrink-0 bg-sidebar text-sidebar-foreground border-r border-sidebar-border p-2 md:p-5 transition-colors duration-300">
+        <aside className="w-64 min-w-64 min-h-screen h-full bg-sidebar text-sidebar-foreground border-r border-sidebar-border p-4">
 
-            <h2 className="hidden md:block text-lg font-bold mb-6">
-                Workspace
+            {/* Sidebar Heading */}
+            <h2 className="font-bold text-lg mb-8 mt-2 px-3">
+                TruthLens
             </h2>
 
+            {/* Navigation Items */}
             <div className="flex flex-col gap-2">
 
                 {menuItems.map((item) => {
@@ -35,16 +37,18 @@ function Sidebar() {
                         <NavLink
                             key={item.name}
                             to={item.path}
-                            title={item.name}
+                            onClick={onNavigate}
                             className={({ isActive }) =>
-                                isActive
-                                    ? "flex items-center gap-3 p-3 rounded-lg bg-sidebar-accent text-sidebar-accent-foreground font-semibold"
-                                    : "flex items-center gap-3 p-3 rounded-lg text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors"
+                                `flex items-center gap-3 w-full p-3 rounded-lg transition-colors ${
+                                    isActive
+                                        ? 'bg-sidebar-accent text-sidebar-accent-foreground font-semibold'
+                                        : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
+                                }`
                             }
                         >
-                            <Icon size={20} />
+                            <Icon size={21} className="shrink-0" />
 
-                            <span className="hidden md:inline">
+                            <span className="block text-sm whitespace-nowrap">
                                 {item.name}
                             </span>
 

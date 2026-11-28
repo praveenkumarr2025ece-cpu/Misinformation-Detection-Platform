@@ -13,10 +13,16 @@ function History() {
 
     function updateStatus(id, newStatus) {
 
-        const updatedArticles = articles.map((article) =>
-            article.id === id
-                ? { ...article, status: newStatus }
-                : article
+        const article = articles.find((item) => item.id === id);
+
+        if (!article || article.status === newStatus) {
+            return;
+        }
+
+        const updatedArticles = articles.map((item) =>
+            item.id === id
+                ? { ...item, status: newStatus }
+                : item
         );
 
         setArticles(updatedArticles);
@@ -25,6 +31,29 @@ function History() {
             'articles',
             JSON.stringify(updatedArticles)
         );
+
+        // Read existing notification records
+        const notifications = JSON.parse(
+            localStorage.getItem('truthLensNotifications') || '[]'
+        );
+
+        // Create a status notification
+        const newNotification = {
+            id: Date.now(),
+            message: `Article marked as ${newStatus}`,
+            articleTitle: article.title,
+            type: 'status',
+            createdAt: new Date().toLocaleString(),
+            read: false
+        };
+
+        localStorage.setItem(
+            'truthLensNotifications',
+            JSON.stringify([newNotification, ...notifications])
+        );
+
+        // Update Navbar
+        window.dispatchEvent(new Event('notificationsUpdated'));
     }
 
     function getStatusColor(status) {
